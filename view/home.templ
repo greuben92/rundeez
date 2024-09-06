@@ -1,0 +1,32 @@
+package view
+
+type HomeData struct {
+	/// Asset manifest map
+	Manifest map[string]string
+	/// Page title
+	Title string
+}
+
+func getManifestURL(manifest map[string]string, key string) string {
+	if path, ok := manifest[key]; ok {
+		return path
+	}
+
+	return "/static/" + key
+}
+
+templ Home(data HomeData) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+			<title>{ data.Title }</title>
+			<link rel="stylesheet" href={ getManifestURL(data.Manifest, "assets/main.css") }/>
+		</head>
+		<body>
+			<marquee>wheeeeeeeeeeeeeeeeeeeeeeeee</marquee>
+			<script src={ getManifestURL(data.Manifest, "assets/main.js") }></script>
+		</body>
+	</html>
+}

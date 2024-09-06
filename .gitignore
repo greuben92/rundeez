@@ -1,0 +1,4 @@
+/.direnv
+/static/assets
+/view/*_templ.go
+/view/*_templ.txt
